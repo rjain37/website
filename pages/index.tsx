@@ -41,7 +41,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           </section>
           <section className="my-8 space-y-4 text-lg">
             <img
-              src="/images/pfp.JPG"
+              src="/images/pfp.jpg"
               style={{
                 width: "40%",
                 float: "right",
@@ -54,7 +54,10 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               and Science Academy. I have a passion for physics and math among
               other disciplines.{" "}
             </p>
-
+            <p>
+              Talk to me about music! Check out some of my playlists {" "}
+              <a href="https://open.spotify.com/user/rubiksunicorn37?si=319f3b377de843e4" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">here</a>.
+            </p>
             <p>
               Check out{" "}
               <Link href="/projects">

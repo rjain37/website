@@ -4,9 +4,9 @@ import PageLayout from "@/layouts/PageLayout";
 import useColorMode from "@/hooks/useColorMode";
 import colorModes from "@/utils/colorModes";
 import Image from "next/image";
-import vidnotes from "@/projects/vidnotes.png";
 import apsatimsa from "@/projects/aps-at-imsa.png";
 import imsagrades from "@/projects/imsagrades.png";
+import jeopardy from "@/projects/jeopardy.png";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -22,7 +22,7 @@ const Projects = () => {
             url="https://apsatimsa.org"
             github="aps-at-imsa"
             className={
-              "dark:to-purple-100-900 bg-gradient-to-tr from-blue-100 to-purple-100 dark:from-blue-800 dark:to-purple-800"
+              "dark:to-green-100-900 bg-gradient-to-tr from-blue-100 to-green-300 dark:from-blue-600 dark:to-green-800"
             }
           >
             <Project.Image src={apsatimsa} />
@@ -40,7 +40,7 @@ const Projects = () => {
             url="https://imsagrades.com"
             github="phultquist/imsa-grades"
             className={
-              "bg-gradient-to-tr from-red-100 to-green-100 dark:from-red-900 dark:to-green-900"
+              "bg-gradient-to-tr from-sky-100 to-blue-100 dark:from-sky-900 dark:to-blue-900"
             }
           >
             <Project.Image src={imsagrades} />
@@ -75,10 +75,10 @@ const Projects = () => {
           <Project
             url="https://rohanja.in/pages/jeopardy.html"
             className={
-              "bg-gradient-to-tr from-red-100 to-green-100 dark:from-red-900 dark:to-green-900"
+              "bg-gradient-to-tr from-yellow-100 to-blue-100 dark:from-yellow-600 dark:to-blue-600"
             }
           >
-            <Project.Image src={imsagrades} />
+            <Project.Image src={jeopardy} />
             <Project.Title>7th Grade Jeopardy Project</Project.Title>
             <Project.Description>
               This is the first application I ever made and it was for my 7th
