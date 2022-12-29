@@ -1,0 +1,85 @@
+.prose :where(h1):not(:where([class~="not-prose"] *)),
+.prose :where(h2):not(:where([class~="not-prose"] *)),
+.prose :where(h3):not(:where([class~="not-prose"] *)),
+.prose :where(h4):not(:where([class~="not-prose"] *)),
+.prose :where(h5):not(:where([class~="not-prose"] *)),
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
+  @apply mt-4 mb-6;
+}
+
+.prose :where(h3):not(:where([class~="not-prose"] *)),
+.prose :where(h4):not(:where([class~="not-prose"] *)) {
+  @apply font-semibold;
+}
+
+.prose :where(h5):not(:where([class~="not-prose"] *)),
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
+  @apply font-medium;
+}
+
+.prose :where(h1):not(:where([class~="not-prose"] *)) {
+  @apply text-4xl;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  @apply text-3xl;
+}
+
+.prose :where(h3):not(:where([class~="not-prose"] *)) {
+  @apply text-2xl;
+}
+
+.prose :where(h4):not(:where([class~="not-prose"] *)) {
+  @apply text-xl;
+}
+
+.prose :where(h5):not(:where([class~="not-prose"] *)) {
+  @apply text-lg;
+}
+
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
+  @apply text-base;
+}
+
+.prose :where(h1):not(:where([class~="not-prose"] *)),
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  @apply font-bold text-primary-800;
+}
+
+.prose :where(h3):not(:where([class~="not-prose"] *)),
+.prose :where(h4):not(:where([class~="not-prose"] *)),
+.prose :where(h5):not(:where([class~="not-prose"] *)),
+.prose :where(h6):not(:where([class~="not-prose"] *)) {
+  @apply text-primary-700;
+}
+
+.dark .prose :where(h1):not(:where([class~="not-prose"] *)),
+.dark .prose :where(h2):not(:where([class~="not-prose"] *)) {
+  @apply text-primary-300;
+}
+
+.dark .prose :where(h3):not(:where([class~="not-prose"] *)),
+.dark .prose :where(h4):not(:where([class~="not-prose"] *)) {
+  @apply text-primary-200;
+}
+
+.dark .prose :where(h5):not(:where([class~="not-prose"] *)),
+.dark .prose :where(h6):not(:where([class~="not-prose"] *)) {
+  @apply text-primary-100;
+}
+
+/* Inline code */
+.prose :not(pre, a) > code,
+:not(pre) > code {
+  @apply whitespace-normal rounded-sm bg-primary-50 p-1 text-primary-600;
+}
+
+/* Inline code */
+.dark .prose :not(pre, a) > code,
+.dark :not(pre) > code {
+  @apply whitespace-normal rounded-sm bg-primary-900 p-1 text-primary-100;
+}
+
+.prose *[id] {
+  scroll-margin-top: 5rem;
+}

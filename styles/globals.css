@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.focus-invisible:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer utilities {
+  .crystal-stroke {
+    stroke: theme(colors.dark.400);
+  }
+  .dark .crystal-stroke {
+    stroke: theme(colors.dark.900);
+  }
+  .image-pixelated {
+    image-rendering: pixelated;
+  }
+}

@@ -1,0 +1,325 @@
+<html>
+  <body>
+    <script>
+      var questionList = [
+        [
+          "This man was the 8th president of Mexico who led an attack at the Alamo that lasted 12 days.",
+          "This man was a former governor of Texas who was also a American soldier and politician. There is a city in Texas named after him.",
+          "This man was the president of the United States during the Mexican War. He was in Office from 1845-1849.",
+          "This group of people were American pioneers that were sent to California. During the hard journey, they ran out of supplies and resorted to cannibalism.",
+          "This man was the first discoverer of gold. Because of this finding, he sparked the Gold Rush of 1849.",
+        ],
+        [
+          "This state got annexed in 1845, exactly 10 years before is when they gained their independence from Mexico.",
+          "This state was where the Gold Rush happened.",
+          "This territory was gained by the US after England gave us permission to have it.",
+          "This state is where the Oregon Trail started.",
+          "This territory was bought from Napoleon and was the area the the US was exploring during Westward Expansion.",
+        ],
+        [
+          "This means not accepting reservations. It is also what you would say if someone asked you for gold once all the gold was mined out.",
+          "This means a big migratation of people to a place where gold has been found.",
+          "This was a period of time in US history, established mostly under the president, where the US used things like the military force and threats to gain land all the way to the Pacific Coast.",
+          "This was a belief that said that the expansion of the United States from the Atlantic to Pacific was not avoidable and 'God's Will'.",
+          "This is what you were called if you took part in the 1849 Gold Rush.",
+        ],
+        [
+          "This was a mail delivery service the was founded in 1860, but then ended in 1861.",
+          "This act, under President Lincoln, pushed people to migrate west by giving each settler 160 acres of land.",
+          "This compromise was a package of bills that wanted to solve the problem that the number of slave and free states had to be equal.",
+          "This purchase gave America about 30,000 sq. mi of land from Mexico. This was after the Mexican-American War.",
+          "This railroad was a 2,000 mile long contiguous railroad that extended from the Mississippi and Missouri Rivers to the San Fransicso Bay.",
+        ],
+        [
+          "This is where about 700 Texans got slaughtered during a 12 day siege.",
+          "A battle at this river was the deciding factor of Texas' Independece.",
+          "This is the year when Texas gained its independece.",
+          "This river is the border of Mexico and Texas.",
+          "During this war, Mexico suffered a terrible defeat, then losing half of their land, but gaining $15 million.",
+        ],
+        [
+          "These were the type of people that wanted to move West.",
+          "Name the disease that killed most pioneers on the journey.",
+          "This was a checkpoint of the Oregon Trail where everybody had to be my July 4th.",
+          "This was the primary reason people were moving west on the Oregon Trail.",
+          "This was the name of the type of wagon used on the Oregon Trail.",
+        ],
+      ];
+      var answerList = [
+        [
+          "Who was Santa Anna?",
+          "Who was Sam Houston?",
+          "Who was James K. Polk?",
+          "Who was the Donner Party?",
+          "Who was James Marshall?",
+        ],
+        [
+          "What is Texas?",
+          "What is California?",
+          "What is Oregon?",
+          "What is Missouri?",
+          "What is Louisiana?",
+        ],
+        [
+          "What is first-come-first-serve?",
+          "What is a Gold Rush?",
+          "What is Westward Expansion?",
+          "What is Manifest Destiny?",
+          "What is a 49er?",
+        ],
+        [
+          "What was the Pony Express?",
+          "What was the Homestead Act?",
+          "What was the Compromise of 1850?",
+          "What was the Gadsden Purchase?",
+          "What was the Transcontinental Railroad?",
+        ],
+        [
+          "What is the Alamo?",
+          "What is the Battle of San Jacinto?",
+          "What was 1835?",
+          "What is the Rio Grande?",
+          "What was the Mexican-American War?",
+        ],
+        [
+          "What is a Pioneer?",
+          "What is Cholera",
+          "What is Independece Rock?",
+          "What is land?",
+          "What is Conestoga?",
+        ],
+      ];
+      var currentCategory = null;
+      var currentCategoryValue = null;
+      var currentTD = null;
+      var playersValue = [0, 0];
+      function displayQuestion(cn, qn, td) {
+        currentCategory = cn - 1;
+        currentCategoryValue = qn - 1;
+        currentTD = td;
+        document.getElementById("tb").style.visibility = "hidden";
+        document.getElementById("daq").style.display = "block";
+        document.getElementById("daq").innerHTML = questionList[cn - 1][qn - 1];
+      }
+      function displayAnswer() {
+        document.getElementById("daq").style.display = "none";
+        document.getElementById("da").style.display = "block";
+        document.getElementById("da").innerHTML =
+          answerList[currentCategory][currentCategoryValue];
+        document.getElementById("wrong1").style.visibility = "visible";
+        document.getElementById("correct1").style.visibility = "visible";
+        document.getElementById("wrong2").style.visibility = "visible";
+        document.getElementById("correct2").style.visibility = "visible";
+      }
+      function displayTB() {
+        document.getElementById("da").style.display = "none";
+        document.getElementById("tb").style.visibility = "visible";
+        currentTD.innerHTML = "";
+        document.getElementById("wrong1").style.visibility = "hidden";
+        document.getElementById("correct1").style.visibility = "hidden";
+        document.getElementById("wrong2").style.visibility = "hidden";
+        document.getElementById("correct2").style.visibility = "hidden";
+      }
+      function updateValue(playerNumber, answerType) {
+        if (answerType == -1) {
+          playersValue[playerNumber] =
+            playersValue[playerNumber] -
+            parseInt(currentTD.innerHTML.substring(2));
+        } else {
+          playersValue[playerNumber] =
+            playersValue[playerNumber] +
+            parseInt(currentTD.innerHTML.substring(2));
+        }
+        document.getElementById("playerValue" + playerNumber).innerHTML =
+          "$" + playersValue[playerNumber];
+        displayTB();
+      }
+    </script>
+    <style>
+      .category {
+        background-color: #00008b;
+        color: #ffffff;
+        text-align: center;
+        font-family: impact;
+        font-size: 27px;
+      }
+      .category-value {
+        background-color: #00008b;
+        color: #daa520;
+        text-align: center;
+        font-family: impact;
+        font-size: 70px;
+      }
+      .daq {
+        display: none;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #00008b;
+        color: #ffffff;
+        font-family: georgia;
+        text-align: center;
+        font-size: 65px;
+        vertical-align: middle;
+        padding-top: 20%;
+        padding-left: 10px;
+        padding-right: 20px;
+      }
+      .player1 {
+        position: absolute;
+        top: 94.1%;
+        left: 20%;
+        background-color: #00008b;
+        color: #daa520;
+        font-size: 30px;
+        font-family: georgia;
+      }
+      .player2 {
+        position: absolute;
+        top: 94.1%;
+        left: 70%;
+        background-color: #00008b;
+        color: #daa520;
+        font-size: 30px;
+        font-family: georgia;
+      }
+    </style>
+
+    <div id="daq" class="daq" onclick="displayAnswer()"></div>
+    <div id="da" class="daq" ondblclick="displayTB()"></div>
+    <div id="player1" class="player1">
+      <span style="visibility: hidden" id="wrong1" onclick="updateValue(0, -1)"
+        >-</span
+      >
+      Player 1
+      <span style="visibility: hidden" id="correct1" onclick="updateValue(0, 1)"
+        >+</span
+      >
+      <div id="playerValue0"></div>
+    </div>
+    <div id="player2" class="player2">
+      <span style="visibility: hidden" id="wrong2" onclick="updateValue(1, -1)"
+        >-</span
+      >
+      Player 2
+      <span style="visibility: hidden" id="correct2" onclick="updateValue(1, 1)"
+        >+</span
+      >
+      <div id="playerValue1"></div>
+    </div>
+    <table
+      id="tb"
+      style="width: 100%; height: 95%; background-color: #000000"
+      align="center"
+    >
+      <tr>
+        <td class="category">People</td>
+        <td class="category">States</td>
+        <td class="category">Vocab</td>
+        <td class="category">Acts & Services</td>
+        <td class="category">Texas</td>
+        <td class="category">Oregon Trail</td>
+      </tr>
+      <tr>
+        <td class="category-value" onclick="displayQuestion(1, 1, this)">
+          $100
+        </td>
+        <td class="category-value" onclick="displayQuestion(2, 1, this)">
+          $100
+        </td>
+        <td class="category-value" onclick="displayQuestion(3, 1, this)">
+          $100
+        </td>
+        <td class="category-value" onclick="displayQuestion(4, 1, this)">
+          $100
+        </td>
+        <td class="category-value" onclick="displayQuestion(5, 1, this)">
+          $100
+        </td>
+        <td class="category-value" onclick="displayQuestion(6, 1, this)">
+          $100
+        </td>
+      </tr>
+      <tr>
+        <td class="category-value" onclick="displayQuestion(1, 2, this)">
+          $200
+        </td>
+        <td class="category-value" onclick="displayQuestion(2, 2, this)">
+          $200
+        </td>
+        <td class="category-value" onclick="displayQuestion(3, 2, this)">
+          $200
+        </td>
+        <td class="category-value" onclick="displayQuestion(4, 2, this)">
+          $200
+        </td>
+        <td class="category-value" onclick="displayQuestion(5, 2, this)">
+          $200
+        </td>
+        <td class="category-value" onclick="displayQuestion(6, 2, this)">
+          $200
+        </td>
+      </tr>
+      <tr>
+        <td class="category-value" onclick="displayQuestion(1, 3, this)">
+          $300
+        </td>
+        <td class="category-value" onclick="displayQuestion(2, 3, this)">
+          $300
+        </td>
+        <td class="category-value" onclick="displayQuestion(3, 3, this)">
+          $300
+        </td>
+        <td class="category-value" onclick="displayQuestion(4, 3, this)">
+          $300
+        </td>
+        <td class="category-value" onclick="displayQuestion(5, 3, this)">
+          $300
+        </td>
+        <td class="category-value" onclick="displayQuestion(6, 3, this)">
+          $300
+        </td>
+      </tr>
+      <tr>
+        <td class="category-value" onclick="displayQuestion(1, 4, this)">
+          $400
+        </td>
+        <td class="category-value" onclick="displayQuestion(2, 4, this)">
+          $400
+        </td>
+        <td class="category-value" onclick="displayQuestion(3, 4, this)">
+          $400
+        </td>
+        <td class="category-value" onclick="displayQuestion(4, 4, this)">
+          $400
+        </td>
+        <td class="category-value" onclick="displayQuestion(5, 4, this)">
+          $400
+        </td>
+        <td class="category-value" onclick="displayQuestion(6, 4, this)">
+          $400
+        </td>
+      </tr>
+      <tr>
+        <td class="category-value" onclick="displayQuestion(1, 5, this)">
+          $500
+        </td>
+        <td class="category-value" onclick="displayQuestion(2, 5, this)">
+          $500
+        </td>
+        <td class="category-value" onclick="displayQuestion(3, 5, this)">
+          $500
+        </td>
+        <td class="category-value" onclick="displayQuestion(4, 5, this)">
+          $500
+        </td>
+        <td class="category-value" onclick="displayQuestion(5, 5, this)">
+          $500
+        </td>
+        <td class="category-value" onclick="displayQuestion(6, 5, this)">
+          $500
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
