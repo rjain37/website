@@ -35,6 +35,8 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                   "I'm a physicist.",
                   "I'm a vegetarian.",
                   "I love music.",
+                  "I'm a programmer.",
+                  "I'm Korean-Indian."
                 ]}
               </Typing>
             </h3>
@@ -50,8 +52,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               }}
             ></img>
             <p>
-              Hey! I'm Rohan, a high school senior at the Illinois Mathematics
-              and Science Academy. I have a passion for physics and math among
+              Hey! I'm Rohan, a high school senior at the <a href="https://imsa.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Illinois Mathematics and Science Academy</a>. I have a passion for physics and math among
               other disciplines.{" "}
             </p>
             <p>
