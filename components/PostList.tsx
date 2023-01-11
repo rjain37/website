@@ -6,7 +6,7 @@ import React from "react";
 const PostList = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <PageLayout>
-      <h1 className={"pt-12 text-4xl font-semibold"}>Posts</h1>
+      <h1 className={"pt-12 text-4xl font-semibold"}><code>ls /Posts</code></h1>
       <PostListLayout posts={posts} />
     </PageLayout>
   );

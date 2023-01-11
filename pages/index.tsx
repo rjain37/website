@@ -31,12 +31,11 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             <h3 className={"text-2xl"}>
               <Typing>
                 {[
-                  "I'm a mathematician.",
-                  "I'm a physicist.",
-                  "I'm a vegetarian.",
+                  "I'm vegetarian.",
                   "I love music.",
-                  "I'm a programmer.",
-                  "I'm Korean-Indian."
+                  "I dance!",
+                  "I'm Korean-Indian.",
+                  "Blackboards >> Whiteboards"
                 ]}
               </Typing>
             </h3>
