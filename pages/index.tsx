@@ -28,7 +28,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             }
           >
             <h1 className={"text-4xl font-semibold"}>Rohan Jain</h1>
-            <h3 className={"text-2xl"}>
+            {/* <h3 className={"text-2xl"}>
               <Typing>
                 {[
                   "I'm vegetarian.",
@@ -38,7 +38,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
                   "Blackboards >> Whiteboards"
                 ]}
               </Typing>
-            </h3>
+            </h3> */}
           </section>
           <section className="my-8 space-y-4 text-lg">
             <img
