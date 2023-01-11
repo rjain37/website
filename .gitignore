@@ -1,11 +1,9 @@
 # dependencies
-node_modules
-package-lock.json
+/node_modules
 /.pnp
 .pnp.js
 
-# testing
-/coverage
+package-lock.json
 
 # next.js
 /.next/
@@ -29,9 +27,3 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-
-# vercel
-.vercel
-
-public/images/posts/
-public/rss.xml
