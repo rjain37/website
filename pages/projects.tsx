@@ -7,6 +7,7 @@ import Image from "next/image";
 import apsatimsa from "@/projects/aps-at-imsa.png";
 import imsagrades from "@/projects/imsagrades.png";
 import jeopardy from "@/projects/jeopardy.png";
+import tablegeneration from "@/projects/table-generator.png";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -18,6 +19,28 @@ const Projects = () => {
           <code>ls /Projects</code>
         </h1>
         <div className="mt-4 space-y-12">
+          <Project
+            url="https://rjain37.github.io/ssp-table-generation/"
+            github="ssp-table-generation"
+            className={
+              "dark:to-blue-100-900 bg-gradient-to-tr from-orange-100 to-blue-300 dark:from-orange-600 dark:to-blue-800"
+            }
+          >
+            <Project.Image src={tablegeneration} />
+            <Project.Title>SSP Table Generator</Project.Title>
+            <Project.Description>
+              <p>
+                The SSP Table Generator is a tool that allows TAs at the Summer
+                Science Program (SSP) to generate dinner tables for the 5.5 
+                weeks of camp. The tool uses roommate pairings, research groups,
+                and sex as the primary parameters for generating tables.
+              </p>
+              <p>
+                Made in collaboration with my wondeful friends Oliver Lin, Gabriele 
+                Di Gianluca, and Nico von Eckartsberg.
+              </p>
+            </Project.Description>
+          </Project>
           <Project
             url="https://apsatimsa.org"
             github="aps-at-imsa"
