@@ -8,6 +8,8 @@ import apsatimsa from "@/projects/aps-at-imsa.png";
 import imsagrades from "@/projects/imsagrades.png";
 import jeopardy from "@/projects/jeopardy.png";
 import tablegeneration from "@/projects/table-generator.png";
+import jhmc from "@/projects/jhmc.png";
+import gradeperturber from "@/projects/grade-perturber.png";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -19,6 +21,25 @@ const Projects = () => {
           <code>ls /Projects</code>
         </h1>
         <div className="mt-4 space-y-12">
+        <Project
+            url="https://grade-perturber.vercel.app/"
+            github="grade-perturber"
+            className={
+              "dark:to-white-100-900 bg-gradient-to-tr from-blue-100 to-white-300 dark:from-blue-600 dark:to-white-800"
+            }
+          >
+            <Project.Image src={gradeperturber} />
+            <Project.Title>Grade Perturber</Project.Title>
+            <Project.Description>
+              <p>
+                Grade Perturber is a tool that allows students to fiddle with their
+                existing grades to see how it would affect their overall grade. 
+                This tool can automatically generate the assignments for students whose
+                school uses PowerSchool as their Student Information System. 
+                However, anyone can use the tool to manually input their grades.
+              </p>
+            </Project.Description>
+          </Project>
           <Project
             url="https://rjain37.github.io/ssp-table-generation/"
             github="ssp-table-generation"
@@ -39,6 +60,20 @@ const Projects = () => {
                 Made in collaboration with my wondeful friends Oliver Lin, Gabriele 
                 Di Gianluca, and Nico von Eckartsberg.
               </p>
+            </Project.Description>
+          </Project>
+          <Project
+            url="https://imsajhmc.com"
+            github="IMSA-JHMC/JHMC-scripts"
+            className={
+              "bg-gradient-to-tr from-pink-50 to-purple-50 dark:from-pink-800 dark:to-purple-800"
+            }
+          >
+            <Project.Image src={jhmc}/>
+            <Project.Title>IMSA JHMC</Project.Title>
+            <Project.Description>
+              The Junior High Math Contest (JHMC) is a contest ran by IMSA's Mu
+              Alpha Theta annually.
             </Project.Description>
           </Project>
           <Project
@@ -63,7 +98,7 @@ const Projects = () => {
             url="https://imsagrades.com"
             github="phultquist/imsa-grades"
             className={
-              "bg-gradient-to-tr from-sky-100 to-blue-100 dark:from-sky-900 dark:to-blue-900"
+              "dark:to-sky-100-900 bg-gradient-to-tr from-teal-100 to-sky-300 dark:from-teal-600 dark:to-sky-800"
             }
           >
             <Project.Image src={imsagrades} />
@@ -81,20 +116,6 @@ const Projects = () => {
               </p>
             </Project.Description>
           </Project>
-          {/* <Project
-            url="https://imsajhmc.com"
-            github="IMSA-JHMC/JHMC-scripts"
-            className={
-              "bg-gradient-to-tr from-pink-50 to-purple-50 dark:from-pink-800 dark:to-purple-800"
-            }
-          >
-            <Project.Image src={vidnotes} />
-            <Project.Title>IMSA JHMC</Project.Title>
-            <Project.Description>
-              The Junior High Math Contest (JHMC) is a contest ran by IMSA's Mu
-              Alpha Theta annually.
-            </Project.Description>
-          </Project> */}
           <Project
             url="https://rohanja.in/pages/jeopardy.html"
             className={
