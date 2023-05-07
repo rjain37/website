@@ -35,7 +35,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
           "flex min-w-full flex-1 flex-col items-center justify-center bg-gradient-to-b from-dark-100 to-primary-50 px-32 py-12 dark:from-dark-900 dark:to-dark-900"
         }
       >
-        <Link href={`/${postsDir}`}>
+        <Link href={`/posts`}>
           <a
             className={
               "mt-2 text-2xl font-semibold uppercase text-primary-600 hover:text-secondary-700 focus:text-secondary-700 dark:text-primary-500 dark:hover:text-secondary-200 dark:focus:text-secondary-200"
@@ -54,8 +54,8 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
               const dedupedTags: string[] = Array.from(new Set(post.data.tags));
               return (
                 <Link
-                  as={`/${postsDir}/${post.slug}`}
-                  href={`/${postsDir}/[slug]`}
+                  as={`/$posts/${post.slug}`}
+                  href={`/$posts/[slug]`}
                   key={post.slug}
                 >
                   <a

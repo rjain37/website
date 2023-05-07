@@ -24,8 +24,8 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
               )}
               <div className={"lg:col-start-2 lg:col-end-5"}>
                 <Link
-                  as={`/${postsDir}/${post.slug}`}
-                  href={`/${postsDir}/[slug]`}
+                  as={`/posts/${post.slug}`}
+                  href={`/posts/[slug]`}
                   key={post.slug}
                 >
                   <a

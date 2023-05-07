@@ -14,21 +14,21 @@ const NavBar = () => {
           className={`navbar flex items-center space-x-3 text-xs sm:space-x-8 sm:text-lg`}
         >
           <Link href="/">
-            <a>rohan portfolio %</a>
+            <a>rohan's portfolio %</a>
           </Link>
           <Link href={`/projects`}>
             <a>
-              <code>cd projects</code>
+              <code>cd Projects</code>
             </a>
           </Link>
-          <Link href={`/${postsDir}`}>
+          <Link href={`/posts`}>
             <a>
-              <code>cd {postsDir}</code>
+              <code>cd posts</code>
             </a>
           </Link>
-          <Link href={`/${tagsDir}`}>
+          <Link href={`/tags`}>
             <a>
-              <code>cd {tagsDir}</code>
+              <code>cd tags</code>
             </a>
           </Link>
         </div>
