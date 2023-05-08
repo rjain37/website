@@ -23,12 +23,12 @@ const NavBar = () => {
           </Link>
           <Link href={`/posts`}>
             <a>
-              <code>cd posts</code>
+              <code>cd Posts</code>
             </a>
           </Link>
           <Link href={`/tags`}>
             <a>
-              <code>cd tags</code>
+              <code>cd Tags</code>
             </a>
           </Link>
         </div>
