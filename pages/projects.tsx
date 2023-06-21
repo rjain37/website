@@ -10,6 +10,7 @@ import jeopardy from "@/projects/jeopardy.png";
 import tablegeneration from "@/projects/table-generator.png";
 import jhmc from "@/projects/jhmc.png";
 import gradeperturber from "@/projects/grade-perturber.png";
+import clashcentral from "@/projects/clash-central.png"
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -21,6 +22,20 @@ const Projects = () => {
           <code>ls /Projects</code>
         </h1>
         <div className="mt-4 space-y-12">
+        <Project
+            url="https://clash-central.vercel.app"
+            github="clash-central"
+            className={
+              "dark:to-white-100-900 bg-gradient-to-tr from-red-100 to-white-300 dark:from-red-600 dark:to-white-800"
+            }>
+            <Project.Image src={clashcentral} />
+            <Project.Title>Clash Central</Project.Title>
+            <Project.Description>
+              <p>
+                Clash of the Halls is an annual competition that puts the seven residence halls of the Illinois Mathematics and Science Academy against each other in a series of competitions over the course of the week. These events are generally very competitive and the whole student body is always curious as to who is in the lead. As such, I created a live leaderboard that shows the current standings of the competition and is updated as results come out.
+              </p>
+            </Project.Description>
+        </Project>
         <Project
             url="https://grade-perturber.vercel.app/"
             github="grade-perturber"

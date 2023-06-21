@@ -51,7 +51,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               }}
             ></img>
             <p>
-              Hey! I'm Rohan, a high school senior at the <a href="https://imsa.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Illinois Mathematics and Science Academy</a>. I have a passion for physics and math among
+              Hey! I'm Rohan, an incoming freshman at the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a> School of Computer Science. I have a passion for computer science and math among
               other disciplines.{" "}
             </p>
             <p>
