@@ -33,8 +33,8 @@ const NavBar = () => {
           </Link>
         </div>
         <div className={`navbar flex items-center space-x-2 sm:space-x-6`}>
-          <DarkModeToggle />
-          <GitHubButton />
+          <DarkModeToggle/>
+          <GitHubButton/>
         </div>
       </div>
     </nav>

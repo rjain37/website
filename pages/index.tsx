@@ -5,7 +5,7 @@ import Head from "next/head";
 import NavBar from "@/components/NavBar";
 import { getSortedPostsMeta } from "@/lib/getPosts";
 import { PostMeta } from "@/lib/types";
-import Typing from "@/components/Typing";
+import Footer from "@/components/Footer";
 import HomepagePostLayout from "@/layouts/HomepagePostLayout";
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
@@ -28,17 +28,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             }
           >
             <h1 className={"text-4xl font-semibold"}>Rohan Jain</h1>
-            {/* <h3 className={"text-2xl"}>
-              <Typing>
-                {[
-                  "I'm vegetarian.",
-                  "I love music.",
-                  "I dance!",
-                  "I'm Korean-Indian.",
-                  "Blackboards >> Whiteboards"
-                ]}
-              </Typing>
-            </h3> */}
+
           </section>
           <section className="my-8 space-y-4 text-lg">
             <img
@@ -86,6 +76,13 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               <code>ls /Posts</code>
             </h3>
             <HomepagePostLayout posts={posts} />
+          </section>
+          <hr></hr>
+          <br></br>
+          <section  className={"self-stretch"}>
+          <h3 className="text-center text-2xl font-light text-light-500">
+              <code>ls /Recent Top Songs</code>
+          </h3>
           </section>
         </div>
       </div>
