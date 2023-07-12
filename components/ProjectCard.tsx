@@ -40,7 +40,7 @@ const GitHub = ({ url }: LinkProps) => (
     url={
       url.includes("/")
         ? `https://github.com/${url}`
-        : `https://github.com/rjain37/${url}`
+        : `https://github.com/maggie-j-liu/${url}`
     }
     icon={SiGithub}
   />
