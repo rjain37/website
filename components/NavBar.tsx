@@ -13,24 +13,17 @@ const NavBar = () => {
         <div
           className={`navbar flex items-center space-x-3 text-xs sm:space-x-8 sm:text-lg`}
         >
-          <Link href="/">
-            <a>rohan's portfolio %</a>
-          </Link>
-          <Link href={`/projects`}>
-            <a>
+            <a href="/">rohan's portfolio %</a>
+
+            <a href={`/projects`}>
               <code>cd Projects</code>
             </a>
-          </Link>
-          <Link href={`/posts`}>
-            <a>
+            <a href={`/posts`}>
               <code>cd Posts</code>
             </a>
-          </Link>
-          <Link href={`/tags`}>
-            <a>
+            <a href={`/tags`}>
               <code>cd Tags</code>
             </a>
-          </Link>
         </div>
         <div className={`navbar flex items-center space-x-2 sm:space-x-6`}>
           <DarkModeToggle/>

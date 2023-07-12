@@ -49,12 +49,10 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               <a href="https://open.spotify.com/user/rubiksunicorn37?si=319f3b377de843e4" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">here</a>.
             </p>
             <p>
-              Check out{" "}
-              <Link href="/projects">
-                <a className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400">
+              Check out
+                <a href="/projects"className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400">
                   cd projects
                 </a>
-              </Link>{" "}
               or my GitHub (
               <a
                 href="https://github.com/rjain37"
@@ -79,13 +77,14 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           </section>
           <hr></hr>
           <br></br>
-          <section  className={"self-stretch"}>
+          {/* <section  className={"self-stretch"}>
           <h3 className="text-center text-2xl font-light text-light-500">
               <code>ls /Recent Top Songs</code>
           </h3>
-          </section>
+          </section> */}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
