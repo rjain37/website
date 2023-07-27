@@ -11,6 +11,7 @@ import tablegeneration from "@/projects/table-generator.png";
 import jhmc from "@/projects/jhmc.png";
 import gradeperturber from "@/projects/grade-perturber.png";
 import clashcentral from "@/projects/clash-central.png"
+import etamac from "@/projects/etamac.png"
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -22,16 +23,31 @@ const Projects = () => {
           <code>ls /Projects</code>
         </h1>
         <div className="mt-4 space-y-12">
+
+        <Project
+          github="Etamac"
+          className={
+            "dark:to-orange-200-400 bg-gradient-to-tr from-red-400 to-orange-200 dark:from-red-400 dark:to-orange-200"
+          }>
+          <Project.Image src={etamac} />
+          <Project.Title>Etamac</Project.Title>
+          <Project.Description>
+            <p>
+              Etamac is an attempt at me learning Swift to create iOS applications. It mimics the popular arithmetic game on the website Zetamac. Use this as an offline tool to get better at mental math!
+            </p>
+          </Project.Description>
+        </Project>
+
         <Project
             url="https://clash-central.vercel.app"
             github="clash-central"
             className={
-              "dark:to-white-100-900 bg-gradient-to-tr from-red-100 to-white-300 dark:from-red-600 dark:to-white-800"
+              "dark:to-white-100-900 bg-gradient-to-tr from-pink-100 to-white-300 dark:from-pink-600 dark:to-white-800"
             }>
             <Project.Image src={clashcentral} />
             <Project.Title>Clash Central</Project.Title>
             <Project.Description>
-              <p>
+            <p>
                 Clash of the Halls is an annual competition that puts the seven residence halls of the Illinois Mathematics and Science Academy against each other in a series of competitions over the course of the week. These events are generally very competitive and the whole student body is always curious as to who is in the lead. As such, I created a live leaderboard that shows the current standings of the competition and is updated as results come out.
               </p>
             </Project.Description>
@@ -88,7 +104,8 @@ const Projects = () => {
             <Project.Title>IMSA JHMC</Project.Title>
             <Project.Description>
               The Junior High Math Contest (JHMC) is a contest ran by IMSA's Mu
-              Alpha Theta annually.
+              Alpha Theta annually. This site was created during 2021 to administer a virtual contest
+              during the COVID-19 pandemic. Technologies used include Google Cloud Platform and Airtable.
             </Project.Description>
           </Project>
           <Project
