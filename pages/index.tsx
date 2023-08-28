@@ -49,11 +49,11 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               <a href="https://open.spotify.com/user/rubiksunicorn37?si=319f3b377de843e4" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">here</a>.
             </p>
             <p>
-              Check out
+              Check out&nbsp;
                 <a href="/projects"className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400">
                   cd projects
                 </a>
-              or my GitHub (
+                &nbsp;or my GitHub (
               <a
                 href="https://github.com/rjain37"
                 target="_blank"
