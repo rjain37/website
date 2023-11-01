@@ -32,9 +32,7 @@ const Projects = () => {
           <Project.Image src={etamac} />
           <Project.Title>Etamac</Project.Title>
           <Project.Description>
-            <p>
               Etamac is an attempt at me learning Swift to create iOS applications. It mimics the popular arithmetic game on the website Zetamac. Use this as an offline tool to get better at mental math!
-            </p>
           </Project.Description>
         </Project>
 
@@ -47,9 +45,7 @@ const Projects = () => {
             <Project.Image src={clashcentral} />
             <Project.Title>Clash Central</Project.Title>
             <Project.Description>
-            <p>
                 Clash of the Halls is an annual competition that puts the seven residence halls of the Illinois Mathematics and Science Academy against each other in a series of competitions over the course of the week. These events are generally very competitive and the whole student body is always curious as to who is in the lead. As such, I created a live leaderboard that shows the current standings of the competition and is updated as results come out.
-              </p>
             </Project.Description>
         </Project>
         <Project
@@ -62,13 +58,11 @@ const Projects = () => {
             <Project.Image src={gradeperturber} />
             <Project.Title>Grade Perturber</Project.Title>
             <Project.Description>
-              <p>
                 Grade Perturber is a tool that allows students to fiddle with their
                 existing grades to see how it would affect their overall grade. 
                 This tool can automatically generate the assignments for students whose
                 school uses PowerSchool as their Student Information System. 
                 However, anyone can use the tool to manually input their grades.
-              </p>
             </Project.Description>
           </Project>
           <Project
@@ -81,16 +75,13 @@ const Projects = () => {
             <Project.Image src={tablegeneration} />
             <Project.Title>SSP Table Generator</Project.Title>
             <Project.Description>
-              <p>
                 The SSP Table Generator is a tool that allows TAs at the Summer
                 Science Program (SSP) to generate dinner tables for the 5.5 
                 weeks of camp. The tool uses roommate pairings, research groups,
                 and sex as the primary parameters for generating tables.
-              </p>
-              <p>
+              <br></br><br></br>
                 Made in collaboration with my wondeful friends Oliver Lin, Gabriele 
                 Di Gianluca, and Nico von Eckartsberg.
-              </p>
             </Project.Description>
           </Project>
           <Project
@@ -118,12 +109,10 @@ const Projects = () => {
             <Project.Image src={apsatimsa} />
             <Project.Title>APs@IMSA</Project.Title>
             <Project.Description>
-              <p>
                 APs@IMSA a project that displays historical AP scores for
                 students at the Illinois Mathematics and Science Academy (
                 <a href="https://imsa.edu">IMSA</a>). Data for the site was
                 obtained through IMSA's Registrar, Reuel Abraham.
-              </p>
             </Project.Description>
           </Project>
           <Project
@@ -136,16 +125,13 @@ const Projects = () => {
             <Project.Image src={imsagrades} />
             <Project.Title>IMSA Grades</Project.Title>
             <Project.Description>
-              <p>
                 Like APs@IMSA, IMSA Grades provides noiseless information for
                 grade data regarding classes taken at the Illinois Mathematics
                 and Science Academy (<a href="https://imsa.edu">IMSA</a>). Data
                 for the site was obtained through IMSA's Office of Institutional
                 Research (sometimes via FOIA).
-              </p>
-              <p>
+              <br></br><br></br>
                 Inherited from <GitHub>phultquist</GitHub> (love that guy).
-              </p>
             </Project.Description>
           </Project>
           <Project

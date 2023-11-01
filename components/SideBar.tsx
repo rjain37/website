@@ -37,8 +37,8 @@ const OtherPostSection = ({
       <h2 className={"text-xs font-bold uppercase tracking-wider"}>
         {displayName} post{" "}
       </h2>
-      <Link href={`/posts/[slug]`} as={`/${postsDir}/${post.slug}`}>
-        <a className={"sidebar-link"}>{post.data.title}</a>
+      <Link href={`/posts/[slug]`} as={`/${postsDir}/${post.slug}`} className={"sidebar-link"}>
+         {post.data.title}
       </Link>
     </div>
   );
@@ -78,8 +78,8 @@ const SideBar = ({
         )}
         <hr />
         <div className={"py-6"}>
-          <Link href={`/posts`}>
-            <a className={"sidebar-link"}>← Back to the blog</a>
+          <Link href={`/posts`} className={"sidebar-link"}>
+                ← Back to the blog
           </Link>
         </div>
       </div>

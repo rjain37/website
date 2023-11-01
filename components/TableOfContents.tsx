@@ -34,13 +34,13 @@ const TableOfContents = ({ headings }: { headings: Heading[] }) => {
                     hash: anchor,
                   }}
                 >
-                  <a
+                  {/* <a
                     className={`${
                       activeAnchor === anchor ? activeStyle : normalStyle
                     } block py-1`}
                   >
                     {text}
-                  </a>
+                  </a> */} {text}
                 </Link>
               ) : (
                 <a
