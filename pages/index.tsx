@@ -32,17 +32,16 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
           </section>
           <section className="my-8 space-y-4 text-lg">
             <img
-              src="/images/pfp.jpg"
+              src="/images/pfp3.jpg"
               style={{
-                width: "40%",
+                width: "45%",
                 float: "right",
                 margin: "12px",
                 borderRadius: "5%",
               }}
             ></img>
             <p>
-              Hey! I'm Rohan, an incoming freshman at the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a> School of Computer Science. I have a passion for computer science and math among
-              other disciplines.{" "}
+              Hey! I'm Rohan, a rising sophomore at the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a>. I'm currently working towards a B.S. in Computer Science and M.S. in Mathematics.{" "}
             </p>
             <p>
               Talk to me about music! Check out some of my playlists {" "}
