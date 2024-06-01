@@ -12,6 +12,7 @@ import jhmc from "@/projects/jhmc.png";
 import gradeperturber from "@/projects/grade-perturber.png";
 import clashcentral from "@/projects/clash-central.png"
 import etamac from "@/projects/etamac.png"
+import qbraidqir from "@/projects/qbraid-qir.png"
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -24,6 +25,17 @@ const Projects = () => {
         </h1>
         <div className="mt-4 space-y-12">
 
+        <Project
+            github="qbraid/qbraid-qir"
+            className={
+              "dark:to-white-100-900 bg-gradient-to-tr from-purple-100 to-white-300 dark:from-purple-600 dark:to-white-800"
+            }>
+            <Project.Image src={qbraidqir} />
+            <Project.Title>qBraid-QIR</Project.Title>
+            <Project.Description>
+            This project aims to make QIR representations accessible via the qBraid-SDK transpiler, and by doing so, open the door to language-specific conversions from any and all high-level quantum languages supported by qBraid.
+            </Project.Description>
+        </Project>
         <Project
           github="Etamac"
           className={
