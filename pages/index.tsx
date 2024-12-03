@@ -7,6 +7,7 @@ import { getSortedPostsMeta } from "@/lib/getPosts";
 import { PostMeta } from "@/lib/types";
 import Footer from "@/components/Footer";
 import HomepagePostLayout from "@/layouts/HomepagePostLayout";
+import NowPlaying from "@/components/NowPlaying";
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
   return (
@@ -28,6 +29,9 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             }
           >
             <h1 className={"text-4xl font-semibold"}>Rohan Jain</h1>
+            <div className="mt-4">
+              <NowPlaying />
+            </div>
 
           </section>
           <section className="my-8 space-y-4 text-lg">
