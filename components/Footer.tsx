@@ -8,7 +8,7 @@ const Footer = () => {
 				<div className="py-8 md:flex md:items-center md:justify-between">
 					<div className="mt-8 md:mt-0 md:order-1">
 						<p className="text-center text-base text-dark-700 dark:text-gray-50">
-							&copy; 2023 Rohan Jain. All rights reserved. 
+							&copy; 2025 Rohan Jain. All rights reserved. 
 						</p>
 					</div>
 				</div>
