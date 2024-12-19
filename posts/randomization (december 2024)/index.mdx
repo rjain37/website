@@ -1,0 +1,39 @@
+---
+title: The Power of Randomization
+date: 12-18-2024
+preview: an example of a randomized algorithm
+tags:
+  - Math
+---
+This semester, I took a course on randomized algorithms and I thought it was pretty cool. In fact, I'm going to start doing research with the professor next semester on randomized data structures. But first, I want to show a pretty simple example of a randomized algorithm to demonstrate why they may be useful.
+
+Consider the following game. There is a fixed value $$n \in \mathbb{N}$$. I'm going to pick two distinct values in the set $$[n] := \{1, 2, \ldots, n\}$$, call them $$v_1, v_2$$. In envelope $$\ell$$, I will place $$v_\ell$$ dollars ($$\ell = 1,2$$). You are going to choose one of the envelopes at random and learn how much money is in it. You will then make a choice: stick with this envelope or switch to the other one. You win the game if you end up with the envelope that has the higher amount of money.
+
+Now notice that when you are given the choice between the two envelopes, you know nothing about the values in the envelopes besides they are in the set $$[n]$$. This means either envelope has a $$50\%$$ chance of winning. Despite this, we can show that there exists a randomized algorithm that would allow you to win $$\geq 50\%$$ of the time.
+
+**Naive Deterministic Approach:**
+One way you may consider solving this problem is to pick a random envelope, and switch envelopes if the value you got was lower then $$\frac n2$$. However, this may not work as I could actually be your worst enemy and I could adversarially choose inputs that would make you lose $$> 50\%$$ of the time, which is exactly what we do not want.
+
+**Randomized Algorithm:**
+This is why we introduce randomization. Let $$T \sim \mathrm{Uniform}(1, n)$$. Our strategy will be to pick envelope $$\ell$$, and if $$v_\ell < T$$, we switch envelopes. We can show that this will always win you $$\geq 50\%$$ of the time. 
+
+***Proof:***
+We can assume WLOG that $$v_1 < v_2$$. Now there are two possible ways to win:
+- You pick envelope 1, $$v_1 < T$$, you swap and win. This occurs with probability $$\frac 12 \frac{n-v_1}{n-1}$$. 
+- You pick envelope 2, $$v_2 > T$$, you do not swap and then also win. This occurs with probability $$\frac 12 \frac{v_2 - 1}{n-1}$$. 
+
+As such, the probability of winning is just
+$$
+\begin{align*}
+    \frac 12 \left(\frac{n-v_1}{n-1} + \frac{v_2 - 1}{n-1}\right) = \frac 12 \left(\frac{n-1 + v_2 - v_1}{n-1}\right).
+\end{align*}
+$$
+Importantly, $$v_2 > v_1 \implies v_2 - v_1 \geq 1$$. As such, we have that the probability of winning is
+$$
+\begin{align*}
+ \frac 12 + \Omega\left(\frac 1n \right).
+\end{align*}
+$$
+This yields the desired result. $$ \square$$
+
+This is a simple example of a randomized algorithm, but I thought it was pretty cool. Hopefully you thought it was as well.
