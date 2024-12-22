@@ -8,7 +8,16 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withRemoteRefresh(
   withBundleAnalyzer({
     images: {
-      domains: ["api.producthunt.com", "lh3.googleusercontent.com"],
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'api.producthunt.com'
+        },
+        {
+          protocol: 'https',
+          hostname: 'lh3.googleusercontent.com'
+        }
+      ]
     },
   })
 );

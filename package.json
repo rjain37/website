@@ -11,7 +11,7 @@
     "rss": "esno scripts/rss.ts"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.4",
+    "@headlessui/react": "^1.7.19",
     "@next/bundle-analyzer": "^11.0.1",
     "@upstash/redis": "^1.6.1",
     "d3": "^7.1.0",

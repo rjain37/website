@@ -24,6 +24,9 @@ const NavBar = () => {
             <a href={`/tags`}>
               <code>cd Tags</code>
             </a>
+            <a href={`/photos`}>
+              <code>cd Photos</code>
+            </a>
         </div>
         <div className={`navbar flex items-center space-x-2 sm:space-x-6`}>
           <DarkModeToggle/>
