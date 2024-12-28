@@ -1,4 +1,3 @@
-// based on https://github.com/kentcdodds/kentcdodds.com/blob/main/app/routes/blog.rss%5B.%5Dxml.tsx
 import { writeFileSync } from "fs";
 import { getSortedPosts } from "@/lib/getPosts";
 import path from "path";

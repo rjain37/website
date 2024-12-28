@@ -13,6 +13,7 @@ import gradeperturber from "@/projects/grade-perturber.png";
 import clashcentral from "@/projects/clash-central.png"
 import etamac from "@/projects/etamac.png"
 import qbraidqir from "@/projects/qbraid-qir.png"
+import typstracer from "@/projects/typstracer.png"
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -25,6 +26,17 @@ const Projects = () => {
         </h1>
         <div className="mt-4 space-y-12">
 
+        <Project
+            github="typstracer"
+            className={
+              "dark:to-white-100-900 bg-gradient-to-tr from-sky-100 to-white-300 dark:from-sky-600 dark:to-white-800"
+            }>
+            <Project.Image src={typstracer} />
+            <Project.Title>Typstracer</Project.Title>
+            <Project.Description>
+              Typstracer is a game that allows you to practice your Typst typesetting skills in a fun, competitive way. If you would like to add a problem to the game, please raise an issue on the <a href="https://github.com/rjain37/typstracer/issues/new/choose" style={{color: darkMode ? "white" : "black", textDecoration: "underline"}}>GitHub</a>.
+            </Project.Description>
+        </Project>
         <Project
             github="qbraid/qbraid-qir"
             className={
