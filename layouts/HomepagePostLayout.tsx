@@ -9,7 +9,7 @@ const HomepagePostLayout = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <ul className={"space-y-5"}>
       {posts.map((post) => {
-        const dedupedTags: string[] = Array.from(new Set(post.data.tags));
+        const dedupedTags: string[] = Array.from(new Set(post.data.tags || [])).sort((a, b) => a.localeCompare(b));
         return (
           <li
             key={post.slug}

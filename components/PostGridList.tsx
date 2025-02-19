@@ -47,7 +47,7 @@ const PostGridList = React.forwardRef<HTMLDivElement, { posts: PostMeta[] }>(
             }
           >
             {props.posts.map((post) => {
-              const dedupedTags: string[] = Array.from(new Set(post.data.tags));
+              const dedupedTags: string[] = Array.from(new Set(post.data.tags || [])).sort((a, b) => a.localeCompare(b));
               return (
                 <Link
                   as={`/$posts/${post.slug}`}

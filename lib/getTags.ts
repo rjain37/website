@@ -13,5 +13,5 @@ export const getAllTags = () => {
 
 export const getUniqueTags = () => {
   const allTags = getAllTags();
-  return Array.from(new Set(allTags));
+  return Array.from(new Set(allTags)).sort((a, b) => a.localeCompare(b));
 };
