@@ -9,7 +9,7 @@ const PostListLayout = ({ posts }: { posts: PostMeta[] }) => {
   return (
     <ul className={"divide-y dark:divide-dark-600"}>
       {posts.map((post) => {
-        const dedupedTags: string[] = Array.from(new Set(post.data.tags || [])).sort((a, b) => a.localeCompare(b));
+        const dedupedTags: string[] = Array.from(new Set(post.data.tags));
         return (
           <li key={post.slug} className={"divide-dark-200 py-12"}>
             <div className={"lg:grid lg:grid-cols-4"}>

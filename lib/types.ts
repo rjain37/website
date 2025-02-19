@@ -1,14 +1,6 @@
-export interface PostData {
-  title: string;
-  date: string;
-  tags?: string[];
-  draft?: boolean;
-  preview?: string;
-}
-
 export interface PostMeta {
   slug: string;
-  data: PostData;
+  data: any;
 }
 
 export interface Post extends PostMeta {
