@@ -8,6 +8,7 @@ import { PostMeta } from "@/lib/types";
 import Footer from "@/components/Footer";
 import HomepagePostLayout from "@/layouts/HomepagePostLayout";
 import NowPlaying from "@/components/NowPlaying";
+import Image from "next/image";
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
   return (
@@ -35,15 +36,19 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
 
           </section>
           <section className="my-8 space-y-4 text-lg">
-            <img
+            <Image
               src="/images/pfp3.jpg"
+              alt="Rohan Jain's profile picture"
+              width={300}
+              height={300}
               style={{
                 width: "45%",
+                height: "auto",
                 float: "right",
                 margin: "12px",
                 borderRadius: "5%",
               }}
-            ></img>
+            />
             <p>
               Hey! I'm Rohan, a rising sophomore at the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a>. I'm currently working towards a B.S. in Computer Science and M.S. in Mathematics.{" "}
             </p>
@@ -53,10 +58,10 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
             </p>
             <p>
               Check out&nbsp;
-                <a href="/projects"className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400">
-                  cd projects
-                </a>
-                &nbsp;or my GitHub (
+              <Link href="/projects/" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400">my projects</Link>&nbsp;to see what I'm working on!
+            </p>
+            <p>
+              Check out my GitHub (
               <a
                 href="https://github.com/rjain37"
                 target="_blank"

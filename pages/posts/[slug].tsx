@@ -173,11 +173,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // For Firebase posts, we need to preprocess the content to handle local image references
   let processedContent = content;
   if (isFromFirebase) {
-    // Replace local image references with our custom API route
-    // This will serve images directly from the posts directory
+    // In production (Vercel), use public directory paths
+    // In development, use the API route for easier testing
+    const isProduction = process.env.NODE_ENV === 'production';
+    
+    // Replace local image references with public URLs or API routes
     processedContent = content.replace(/!\[(.*?)\]\(\.\/(.*?)\)/g, (match, alt, imagePath) => {
-      // Create a URL to our blog-image API endpoint
-      return `![${alt}](/api/blog-image/${params.slug}/${imagePath})`;
+      if (isProduction) {
+        // In production, use the public directory path
+        // Images should have been copied there by the copy-blog-images.js script
+        return `![${alt}](/images/posts/${params.slug}/${imagePath})`;
+      } else {
+        // In development, use the API route for easier testing
+        return `![${alt}](/api/blog-image/${params.slug}/${imagePath})`;
+      }
     });
   }
 
