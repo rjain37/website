@@ -167,14 +167,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
 
   const cwd = path.join(POSTS_PATH, post.path, "..");
+  // Check if post is from Firebase
+  const isFromFirebase = postDetails !== null;
+  
+  // For Firebase posts, we need to preprocess the content to handle local image references
+  let processedContent = content;
+  if (isFromFirebase) {
+    // Replace local image references with placeholders
+    // This will prevent the MDX bundler from trying to resolve local images that don't exist
+    processedContent = content.replace(/!\[(.*?)\]\(\.\/(.*?)\)/g, (match, alt, path) => {
+      return `![${alt}](/api/placeholder-image?name=${encodeURIComponent(path)})`;
+    });
+  }
+
   const { code: mdxSource } = await bundleMDX({
-    source: content,
+    source: processedContent,
     cwd,
     mdxOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
         remarkMath,
-        remarkMdxImages,
+        // Only use remarkMdxImages for local files, not Firebase content
+        ...(!isFromFirebase ? [remarkMdxImages] : []),
         remarkGfm,
         remarkDirective,
         remarkFootnotes,
@@ -183,8 +197,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...(options.rehypePlugins ?? []),
         rehypeKatex,
         rehypeMeta,
-        [rehypeImageSize, { dir: cwd }],
       ];
+      
+      // Only add image size processing for local files
+      if (!isFromFirebase) {
+        options.rehypePlugins.push([rehypeImageSize, { dir: cwd }]);
+      }
       return options;
     },
     esbuildOptions(options) {
