@@ -14,23 +14,64 @@ module.exports = withRemoteRefresh(
     // Use standalone output format for smaller builds
     output: 'standalone',
     
-    // Reduce webpack cache size
+    // Optimize webpack settings and reduce cache size
     webpack: (config, { dev, isServer }) => {
-      // Only keep webpack cache in development
+      // Force disable cache in production
       if (!dev) {
         config.cache = false;
+      } else {
+        // Limit cache size even in development
+        if (config.cache) {
+          config.cache = {
+            type: 'filesystem',
+            buildDependencies: {
+              config: [__filename]
+            },
+            cacheDirectory: '.next/cache/webpack',
+            maxAge: 86400000, // 1 day in milliseconds
+            compression: 'gzip',
+            profile: false,
+            // Limit memory usage
+            memoryCacheUnaffected: false,
+            // Evict items when cache gets too large
+            maxMemoryGenerations: 1
+          };
+        }
       }
       
-      // Optimize for production builds
-      if (!dev && !isServer) {
+      // Optimize for all builds
+      if (!isServer) {
         // Exclude large dependencies from the client bundle
-        config.externals = [...(config.externals || []), 'sharp'];
+        config.externals = [...(config.externals || []), 'sharp', 'firebase-admin'];
+      }
+      
+      // Enhance optimization settings for better performance and smaller bundles
+      if (config.optimization) {
+        // Improve tree shaking
+        config.optimization.usedExports = true;
         
-        // Add additional optimizations
-        if (config.optimization) {
-          // Improve tree shaking
-          config.optimization.usedExports = true;
-        }
+        // Better code splitting
+        config.optimization.splitChunks = {
+          chunks: 'all',
+          cacheGroups: {
+            // Create a separate chunk for vendor modules
+            vendor: {
+              name: 'vendors',
+              test: /[\\/]node_modules[\\/]/,
+              priority: -10,
+              chunks: 'initial',
+              reuseExistingChunk: true,
+            },
+            // Create a separate chunk for common code
+            common: {
+              name: 'commons',
+              minChunks: 2,
+              priority: -20,
+              chunks: 'initial',
+              reuseExistingChunk: true,
+            },
+          },
+        };
       }
       
       return config;

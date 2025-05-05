@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 5001",
-    "build": "node scripts/copy-blog-images.js && next build",
-    "full-build": "node scripts/copy-blog-images.js && next build && pnpm rss",
+    "build": "node scripts/clear-cache.js",
+    "full-build": "node scripts/copy-blog-images.js && node scripts/clear-cache.js && pnpm rss",
     "start": "next start -p 5001",
     "lint": "next lint",
     "convert": "./scripts/convert.sh",
     "rss": "esno scripts/rss.ts",
     "optimize-images": "node scripts/optimize-images.js",
-    "clean-deps": "node scripts/clean-dependencies.js"
+    "clean-deps": "node scripts/clean-dependencies.js",
+    "clean-cache": "rm -rf .next/cache/webpack"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
