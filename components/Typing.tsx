@@ -4,19 +4,22 @@ const Typing = ({ children }: { children: string[] }) => {
   const [typed, setTyped] = React.useState("");
   const [backwards, setBackwards] = React.useState(false);
   const [wordIdx, setWordIdx] = React.useState(0);
-  const prefixes: string[] = [];
-  for (let i = 1; i < children.length; i++) 
-  {
-    for (let j = 0; j < children[i].length && j < children[i - 1].length; j++) 
-    {
-      if (children[i][j] !== children[i - 1][j]) 
-      {
-        prefixes.push(children[i].substring(0, j));
-        break;
+  
+  // Use useMemo to prevent prefixes array from being recreated on every render
+  const prefixes = React.useMemo(() => {
+    const result: string[] = [];
+    for (let i = 1; i < children.length; i++) {
+      for (let j = 0; j < children[i].length && j < children[i - 1].length; j++) {
+        if (children[i][j] !== children[i - 1][j]) {
+          result.push(children[i].substring(0, j));
+          break;
+        }
       }
     }
-  }
-  prefixes.push(children[children.length - 1]);
+    // Add the last child at the end
+    result.push(children[children.length - 1]);
+    return result;
+  }, [children]);
   React.useEffect(() => {
     if (typed.length !== children[wordIdx].length) {
       if (backwards) {
@@ -43,7 +46,7 @@ const Typing = ({ children }: { children: string[] }) => {
         }
       }, 2000);
     }
-  }, [typed]);
+  }, [typed, backwards, children, prefixes, wordIdx]);
 
   return (
     <>

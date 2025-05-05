@@ -63,16 +63,18 @@ const Image = (props: ImageProps) => {
     return (
       <div className="w-full my-4">
         <div className="mx-auto w-max max-w-full">
-          <img 
+          <NextImage 
             src={imgSrc} 
             alt={alt || ''} 
+            width={width || 800}
+            height={height || 600}
             className="max-w-full h-auto rounded-lg"
             style={{ 
               opacity: isLoading ? 0.5 : 1,
               transition: "opacity 0.3s ease-in-out",
               display: error ? 'none' : 'block'
             }}
-            onLoad={() => {
+            onLoadingComplete={() => {
               setIsLoading(false);
               setError(false);
             }}

@@ -27,12 +27,10 @@ module.exports = withRemoteRefresh(
             buildDependencies: {
               config: [__filename]
             },
-            cacheDirectory: '.next/cache/webpack',
+            cacheDirectory: path.resolve(process.cwd(), '.next/cache/webpack'),
             maxAge: 86400000, // 1 day in milliseconds
             compression: 'gzip',
             profile: false,
-            // Limit memory usage
-            memoryCacheUnaffected: false,
             // Evict items when cache gets too large
             maxMemoryGenerations: 1
           };
@@ -47,8 +45,7 @@ module.exports = withRemoteRefresh(
       
       // Enhance optimization settings for better performance and smaller bundles
       if (config.optimization) {
-        // Improve tree shaking
-        config.optimization.usedExports = true;
+        // Tree shaking is enabled by default in production
         
         // Better code splitting
         config.optimization.splitChunks = {
