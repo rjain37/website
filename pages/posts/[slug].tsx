@@ -14,7 +14,8 @@ import SideBar from "@/components/SideBar";
 import { getSortedPosts, getPostBySlug } from "@/lib/getPosts";
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
-import { rehypeImgSize, rehypeMeta } from "@/utils/rehype";
+import rehypeImageSize from "@/utils/rehype/imageSize";
+import { rehypeMeta } from "@/utils/rehype";
 import { remarkFootnotes } from "@/utils/remark";
 import { remarkMdxImages } from "remark-mdx-images";
 import remarkGfm from "remark-gfm";
@@ -182,7 +183,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...(options.rehypePlugins ?? []),
         rehypeKatex,
         rehypeMeta,
-        [rehypeImgSize, { dir: cwd }],
+        [rehypeImageSize, { dir: cwd }],
       ];
       return options;
     },

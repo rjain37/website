@@ -1,68 +1,106 @@
-// https://github.com/ksoichiro/rehype-img-size/blob/master/index.js
-import visit from "unist-util-visit";
-import imageSize from "image-size";
-import { ffprobe } from "node-ffprobe";
-import ffprobeStatic from "ffprobe-static";
-import path from "path";
-import os from "os";
+// Based on https://github.com/ksoichiro/rehype-img-size
+import type { Element, Root } from 'hast';
+import sizeOf from 'image-size';
+import { ffprobe } from 'node-ffprobe';
+import ffprobeStatic from 'ffprobe-static';
+import path from 'path';
+import os from 'os';
+import visit from 'unist-util-visit';
+import type { Node } from 'unist';
+import fs from 'fs';
 
-// https://github.com/syntax-tree/unist-util-visit-parents/issues/8#issuecomment-619381050
-const visitAsync = async (tree: any, matcher: any, asyncVisitor: Function) => {
-  const matches: any[] = [];
-  visit(tree, matcher, (...args) => {
-    matches.push(args);
-    return tree;
+// Helper function to handle async operations
+const visitAsync = async (tree: Node, matcher: any, asyncVisitor: (node: Element, index: number, parent: Node) => Promise<void>) => {
+  const matches: Array<[Element, number, Node]> = [];
+  
+  visit(tree, matcher, (node: Element, index: number, parent: Node) => {
+    matches.push([node, index, parent]);
   });
 
-  const promises = matches.map((match) => asyncVisitor(...match));
+  const promises = matches.map(([node, index, parent]) => asyncVisitor(node, index, parent));
   await Promise.all(promises);
 
   return tree;
 };
 
+// Directory to resolve relative paths
 let dir: string;
+
+// Get image dimensions
 const getImageSize = (src: string) => {
-  src = path.join(dir, src);
-  return imageSize(src);
+  try {
+    const fullPath = path.join(dir, src);
+    if (!fs.existsSync(fullPath)) {
+      console.warn(`Image not found: ${fullPath}`);
+      return { width: 0, height: 0 };
+    }
+    const dimensions = sizeOf(fullPath);
+    return {
+      width: dimensions.width || 0,
+      height: dimensions.height || 0
+    };
+  } catch (error) {
+    console.error(`Error getting image size for ${src}:`, error);
+    return { width: 0, height: 0 };
+  }
 };
 
+// Get video dimensions
 const getVideoSize = async (src: string) => {
-  src = path.join(dir, src);
-  const ffprobePath = os.platform() === "darwin" && os.arch() !== "x64"
-    ? "/opt/homebrew/bin/ffprobe"
-    : ffprobeStatic.path;
+  try {
+    const fullPath = path.join(dir, src);
+    if (!fs.existsSync(fullPath)) {
+      console.warn(`Video not found: ${fullPath}`);
+      return { width: 0, height: 0 };
+    }
     
-  const info = await ffprobe(src, ffprobePath);
-  
-  return {
-    width: info.streams?.[0]?.width || 0,
-    height: info.streams?.[0]?.height || 0,
-  };
+    const ffprobePath = os.platform() === "darwin" && os.arch() !== "x64"
+      ? "/opt/homebrew/bin/ffprobe"
+      : ffprobeStatic.path;
+    
+    const info = await ffprobe(fullPath, ffprobePath);
+    
+    return {
+      width: info.streams?.[0]?.width || 0,
+      height: info.streams?.[0]?.height || 0,
+    };
+  } catch (error) {
+    console.error(`Error getting video size for ${src}:`, error);
+    return { width: 0, height: 0 };
+  }
 };
+
 const setImageSize = (options: { dir: string }) => {
   dir = options.dir;
   return transform;
 };
+// Track imports for mdx/jsx
 const imports: { name: any; source: any }[] = [];
-const transform = async (tree: any) => {
+
+const transform = async (tree: Root) => {
   visit(tree, "mdxjsEsm", onimport);
-  await visitAsync(tree, "mdxJsxTextElement", onelement); // type from https://github.com/remcohaszing/remark-mdx-images/blob/main/src/index.ts
+  await visitAsync(tree, "mdxJsxTextElement", onelement); 
 };
 
 const onimport = (node: any) => {
-  if (node.data?.estree?.body) {
-    for (const item of node.data.estree.body) {
-      let name = item.specifiers?.[0]?.local?.name;
-      let source = item.source?.value;
-      if (name && source) {
-        imports.push({
-          name,
-          source,
-        });
-      }
+  let name;
+  const names = [];
+  for (const imp of node.data.estree.body[0].specifiers) {
+    if (imp.type === "ImportDefaultSpecifier") {
+      name = imp.local.name;
+    } else if (imp.type === "ImportSpecifier") {
+      names.push(imp.local.name);
+    }
+  }
+  const source = node.data.estree.body[0].source.value;
+  if (source.endsWith(".jpg") || source.endsWith(".png") || source.endsWith(".jpeg") || source.endsWith(".mp4") || source.endsWith(".webm")) {
+    imports.push({ name, source });
+    for (const n of names) {
+      imports.push({ name: n, source });
     }
   }
 };
+
 const onelement = async (node: any) => {
   if (node.name === "img") {
     const srcAttribute = node.attributes.find(
