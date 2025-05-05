@@ -173,10 +173,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // For Firebase posts, we need to preprocess the content to handle local image references
   let processedContent = content;
   if (isFromFirebase) {
-    // Replace local image references with placeholders
-    // This will prevent the MDX bundler from trying to resolve local images that don't exist
-    processedContent = content.replace(/!\[(.*?)\]\(\.\/(.*?)\)/g, (match, alt, path) => {
-      return `![${alt}](/api/placeholder-image?name=${encodeURIComponent(path)})`;
+    // Replace local image references with our custom API route
+    // This will serve images directly from the posts directory
+    processedContent = content.replace(/!\[(.*?)\]\(\.\/(.*?)\)/g, (match, alt, imagePath) => {
+      // Create a URL to our blog-image API endpoint
+      return `![${alt}](/api/blog-image/${params.slug}/${imagePath})`;
     });
   }
 

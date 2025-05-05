@@ -29,9 +29,21 @@ initializeApp({
 
 const db = getFirestore();
 const storage = getStorage();
-// Make sure to use the correct storage bucket name
-const storageBucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || process.env.FIREBASE_STORAGE_BUCKET || `${process.env.FIREBASE_PROJECT_ID}.appspot.com`;
+// Firebase Storage bucket could be in different formats, let's try the standard format
+const projectId = process.env.FIREBASE_PROJECT_ID || process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'website-2e501';
+
+// Try the standard bucket name format first (this is the most common format)
+const standardBucketName = `${projectId}.appspot.com`;
+
+// If an explicit bucket name is provided, use that instead
+const configuredBucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || process.env.FIREBASE_STORAGE_BUCKET;
+
+// Use the provided bucket name or fall back to the standard format
+const storageBucketName = configuredBucketName || standardBucketName;
+
+console.log(`Project ID: ${projectId}`);
 console.log(`Using storage bucket: ${storageBucketName}`);
+
 const bucket = storage.bucket(storageBucketName);
 
 // Path to your posts directory
