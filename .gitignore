@@ -29,3 +29,19 @@ posts/cmu_id_apple_wallet (august 2023)
 posts/dragon_curves (november 2023)
 posts/addressing_weakness (november 2023)
 posts/winter_break_schedule (december 2023)
+# Large media files
+*.mp4
+*.mov
+*.webm
+*.psd
+*.ai
+*.sketch
+# Cache and build
+.next/cache
+dist
+# Logs and debugging
+# Editor directories
+.idea
+.vscode
+*.swp
+*.swo
