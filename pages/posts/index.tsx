@@ -9,7 +9,7 @@ const PostIndex = ({ posts }: { posts: PostMeta[] }) => {
 export default PostIndex;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getSortedPostsMeta();
+  const posts = await getSortedPostsMeta();
   return {
     props: {
       posts,

@@ -11,7 +11,7 @@ import NavBar from "@/components/NavBar";
 import TableOfContents from "@/components/TableOfContents";
 import { POSTS_PATH, postFiles } from "@/utils/posts";
 import SideBar from "@/components/SideBar";
-import { getSortedPosts } from "@/lib/getPosts";
+import { getSortedPosts, getPostBySlug } from "@/lib/getPosts";
 import { PostMeta, Heading } from "@/lib/types";
 import { codeBase } from "@/utils/siteInfo";
 import { rehypeImgSize, rehypeMeta } from "@/utils/rehype";
@@ -91,14 +91,40 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!params) {
     throw new Error("params is undefined");
   }
-  const posts = getSortedPosts();
-  const postIndex = posts.findIndex((post) => post.slug === params.slug);
+  // Get posts from Firebase or local filesystem
+  const posts = await getSortedPosts();
+  const postIndex = posts.findIndex((post) => post.slug === params.slug as string);
+  
+  // If post not found, return 404
+  if (postIndex === -1) {
+    return {
+      notFound: true,
+    };
+  }
+  
   const post = posts[postIndex];
   const prev = posts[postIndex + 1] || null;
   const next = posts[postIndex - 1] || null;
-  const postFilePath = path.join(POSTS_PATH, post.path);
-  const source = fs.readFileSync(postFilePath, "utf-8");
-  const { content, data } = matter(source, {});
+  
+  // Get post content
+  let content: string;
+  let data: any;
+  
+  // Try to get post from Firebase first
+  const postDetails = await getPostBySlug(params.slug as string);
+  
+  if (postDetails) {
+    // Use content from Firebase
+    content = postDetails.content;
+    data = postDetails.data;
+  } else {
+    // Fallback to file system
+    const postFilePath = path.join(POSTS_PATH, post.path);
+    const source = fs.readFileSync(postFilePath, "utf-8");
+    const parsedMatter = matter(source, {});
+    content = parsedMatter.content;
+    data = parsedMatter.data;
+  }
 
   // get headings
   const lines = content.split("\n");
@@ -194,10 +220,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = postFiles.map((file) => ({ params: { slug: file.slug } }));
+  // Get all posts from either legacy file system or Firebase
+  const posts = await getSortedPosts();
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+  
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking', // Use blocking to allow for new posts without rebuilding
   };
 };
 

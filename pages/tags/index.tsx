@@ -59,7 +59,7 @@ const TagIndex = ({ tags }: { tags: string[] }) => {
 export default TagIndex;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const tags = getAllTags();
+  const tags = await getAllTags();
   return {
     props: {
       tags,

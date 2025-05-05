@@ -93,7 +93,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getSortedPostsMeta();
+  const posts = await getSortedPostsMeta();
   return {
     props: {
       posts,

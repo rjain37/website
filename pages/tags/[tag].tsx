@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     throw new Error("params is undefined");
   }
   const tag = params.tag as string;
-  const posts = getPostsMetaWithTag(tag);
+  const posts = await getPostsMetaWithTag(tag);
   return {
     props: {
       tag,
@@ -36,10 +36,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getUniqueTags().map((tag) => ({ params: { tag } }));
+  const tags = await getUniqueTags();
+  const paths = tags.map((tag) => ({ params: { tag } }));
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 

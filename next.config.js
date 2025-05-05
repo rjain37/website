@@ -7,6 +7,8 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 module.exports = withRemoteRefresh(
   withBundleAnalyzer({
+    // Fix for the route mismatch error
+    trailingSlash: true,
     images: {
       domains: ["api.producthunt.com", "lh3.googleusercontent.com"],
     },

@@ -1,7 +1,8 @@
 // https://github.com/ksoichiro/rehype-img-size/blob/master/index.js
 import visit from "unist-util-visit";
 import imageSize from "image-size";
-import ffprobe from "ffprobe";
+import { ffprobe } from "node-ffprobe";
+import ffprobeStatic from "ffprobe-static";
 import path from "path";
 import os from "os";
 
@@ -27,15 +28,15 @@ const getImageSize = (src: string) => {
 
 const getVideoSize = async (src: string) => {
   src = path.join(dir, src);
-  const info = await ffprobe(src, {
-    path:
-      os.platform() === "darwin" && os.arch() !== "x64"
-        ? "/opt/homebrew/bin/ffprobe"
-        : require("ffprobe-static").path,
-  });
+  const ffprobePath = os.platform() === "darwin" && os.arch() !== "x64"
+    ? "/opt/homebrew/bin/ffprobe"
+    : ffprobeStatic.path;
+    
+  const info = await ffprobe(src, ffprobePath);
+  
   return {
-    width: info.streams[0].width,
-    height: info.streams[0].height,
+    width: info.streams?.[0]?.width || 0,
+    height: info.streams?.[0]?.height || 0,
   };
 };
 const setImageSize = (options: { dir: string }) => {
