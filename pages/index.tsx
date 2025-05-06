@@ -50,7 +50,7 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               }}
             />
             <p>
-              Hey! I'm Rohan, a rising sophomore at the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a>. I'm currently working towards a B.S. in Computer Science and M.S. in Mathematics.{" "}
+              Hey! I'm Rohan, a rising junior at the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a>. I'm currently working towards a B.S. in Computer Science.{" "}
             </p>
             <p>
               Talk to me about music! Check out some of my playlists {" "}
