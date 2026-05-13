@@ -29,7 +29,7 @@ const Projects = () => {
         <Project
             github="typstracer"
             className={
-              "dark:to-white-100-900 bg-gradient-to-tr from-sky-100 to-white-300 dark:from-sky-600 dark:to-white-800"
+              "bg-gradient-to-tr from-sky-200 to-cyan-100 dark:from-sky-800 dark:to-cyan-900"
             }>
             <Project.Image src={typstracer} />
             <Project.Title>Typstracer</Project.Title>
@@ -40,7 +40,7 @@ const Projects = () => {
         <Project
             github="qbraid/qbraid-qir"
             className={
-              "dark:to-white-100-900 bg-gradient-to-tr from-purple-100 to-white-300 dark:from-purple-600 dark:to-white-800"
+              "bg-gradient-to-tr from-purple-200 to-fuchsia-100 dark:from-purple-800 dark:to-fuchsia-900"
             }>
             <Project.Image src={qbraidqir} />
             <Project.Title>qBraid-QIR</Project.Title>
@@ -51,7 +51,7 @@ const Projects = () => {
         <Project
           github="Etamac"
           className={
-            "dark:to-orange-200-400 bg-gradient-to-tr from-red-400 to-orange-200 dark:from-red-400 dark:to-orange-200"
+            "bg-gradient-to-tr from-red-300 to-orange-200 dark:from-red-800 dark:to-orange-900"
           }>
           <Project.Image src={etamac} />
           <Project.Title>Etamac</Project.Title>
@@ -64,7 +64,7 @@ const Projects = () => {
             url="https://clash-central.vercel.app"
             github="clash-central"
             className={
-              "dark:to-white-100-900 bg-gradient-to-tr from-pink-100 to-white-300 dark:from-pink-600 dark:to-white-800"
+              "bg-gradient-to-tr from-pink-200 to-rose-100 dark:from-pink-800 dark:to-rose-900"
             }>
             <Project.Image src={clashcentral} />
             <Project.Title>Clash Central</Project.Title>
@@ -76,7 +76,7 @@ const Projects = () => {
             url="https://grade-perturber.vercel.app/"
             github="grade-perturber"
             className={
-              "dark:to-white-100-900 bg-gradient-to-tr from-blue-100 to-white-300 dark:from-blue-600 dark:to-white-800"
+              "bg-gradient-to-tr from-blue-200 to-indigo-100 dark:from-blue-800 dark:to-indigo-900"
             }
           >
             <Project.Image src={gradeperturber} />
@@ -93,7 +93,7 @@ const Projects = () => {
             url="https://rjain37.github.io/ssp-table-generation/"
             github="ssp-table-generation"
             className={
-              "dark:to-blue-100-900 bg-gradient-to-tr from-orange-100 to-blue-300 dark:from-orange-600 dark:to-blue-800"
+              "bg-gradient-to-tr from-amber-200 to-sky-200 dark:from-amber-800 dark:to-sky-900"
             }
           >
             <Project.Image src={tablegeneration} />
@@ -127,7 +127,7 @@ const Projects = () => {
             url="https://apsatimsa.org"
             github="aps-at-imsa"
             className={
-              "dark:to-green-100-900 bg-gradient-to-tr from-blue-100 to-green-300 dark:from-blue-600 dark:to-green-800"
+              "bg-gradient-to-tr from-blue-200 to-emerald-200 dark:from-blue-800 dark:to-emerald-900"
             }
           >
             <Project.Image src={apsatimsa} />
@@ -143,7 +143,7 @@ const Projects = () => {
             url="https://imsagrades.com"
             github="phultquist/imsa-grades"
             className={
-              "dark:to-sky-100-900 bg-gradient-to-tr from-teal-100 to-sky-300 dark:from-teal-600 dark:to-sky-800"
+              "bg-gradient-to-tr from-teal-200 to-sky-200 dark:from-teal-800 dark:to-sky-900"
             }
           >
             <Project.Image src={imsagrades} />

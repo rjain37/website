@@ -50,11 +50,11 @@ export default function Home({ posts }: { posts: PostMeta[] }) {
               }}
             />
             <p>
-              Hey! I'm Rohan, a rising junior at the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a>. I'm currently working towards a B.S. in Computer Science.{" "}
+              Hey! I'm Rohan. I graduated from the <a href="https://cmu.edu" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">Carnegie Mellon</a> School of Computer Science. I'm about to be a Quantitative Research Intern at <a href="https://drw.com" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">DRW</a>.{" "}
             </p>
             <p>
               Talk to me about music! Check out some of my playlists {" "}
-              <a href="https://open.spotify.com/user/rubiksunicorn37?si=319f3b377de843e4" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">here</a>.
+              <a href="sptfy.in/rohanjain" className="font-medium text-contrast-700 hover:text-contrast-500 dark:text-contrast-500 dark:hover:text-contrast-400" target="-blank">here</a>.
             </p>
             <p>
               Check out&nbsp;
