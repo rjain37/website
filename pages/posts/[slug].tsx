@@ -197,17 +197,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
         remarkMath,
-        // Only use remarkMdxImages for local files, not Firebase content
         ...(!isFromFirebase ? [remarkMdxImages] : []),
         remarkGfm,
         remarkDirective,
         remarkFootnotes,
-      ];
+      ] as any[];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeKatex,
         rehypeMeta,
-      ];
+      ] as any[];
       
       // Only add image size processing for local files
       if (!isFromFirebase) {

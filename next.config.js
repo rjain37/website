@@ -10,10 +10,7 @@ module.exports = withRemoteRefresh(
   withBundleAnalyzer({
     // Fix for the route mismatch error
     trailingSlash: true,
-    
-    // Use standalone output format for smaller builds
-    output: 'standalone',
-    
+
     // Optimize webpack settings and reduce cache size
     webpack: (config, { dev, isServer }) => {
       // Force disable cache in production
