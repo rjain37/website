@@ -23,16 +23,19 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async signIn({ user }) {
-      const allowedEmail = process.env.ALLOWED_EMAIL;
-      
-      console.log('Sign-in attempt:', { userEmail: user.email, allowedEmail });
-      
-      if (allowedEmail && user.email === allowedEmail) {
-        console.log('Sign-in successful: Email matched allowed email');
+      const allowedEmails = (process.env.ALLOWED_EMAIL || "")
+        .split(",")
+        .map((e) => e.trim().toLowerCase())
+        .filter(Boolean);
+
+      console.log('Sign-in attempt:', { userEmail: user.email, allowedEmails });
+
+      if (user.email && allowedEmails.includes(user.email.toLowerCase())) {
+        console.log('Sign-in successful: Email matched allowed list');
         return true;
       }
 
-      console.log('Sign-in rejected: Email did not match allowed email');
+      console.log('Sign-in rejected: Email not in allowed list');
       return false;
     },
   },
