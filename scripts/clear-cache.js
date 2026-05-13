@@ -44,7 +44,7 @@ function runOptimizedBuild() {
     process.env.NODE_ENV = 'production';
     
     // Run the build command
-    execSync('node scripts/copy-blog-images.js && next build', { 
+    execSync('node scripts/copy-blog-images.js && next build --webpack', {
       stdio: 'inherit',
       env: {
         ...process.env,
