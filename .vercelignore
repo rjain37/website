@@ -1,5 +1,7 @@
 .git
+.git/**
 .github
+pnpm-workspace.yaml
 .next/cache
 node_modules
 scripts/migration
