@@ -281,7 +281,8 @@ export function slug (value: string) {
 
 export const config = {
   unstable_excludeFiles: [
-    "node_modules/.pnpm/ffprobe-static@3.0.0/**/*",
+    "node_modules/.pnpm/ffprobe-static@*/**/*",
+    "node_modules/ffprobe-static/**/*",
     "projects/**/*",
   ],
 };

@@ -11,6 +11,19 @@ module.exports = withRemoteRefresh(
     // Fix for the route mismatch error
     trailingSlash: true,
 
+    // Shrink serverless function bundles by excluding files that are never
+    // needed at runtime. ffprobe-static is a 70+ MB binary used only during
+    // build (in utils/rehype/imageSize.ts for local MDX images).
+    outputFileTracingExcludes: {
+      '*': [
+        'node_modules/.pnpm/ffprobe-static@*/**/*',
+        'node_modules/ffprobe-static/**/*',
+        'public/images/posts/**',
+        'projects/**',
+        '.git/**',
+      ],
+    },
+
     // Optimize webpack settings and reduce cache size
     webpack: (config, { dev, isServer }) => {
       // Force disable cache in production

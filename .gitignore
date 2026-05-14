@@ -4,6 +4,7 @@
 .pnp.js
 
 package-lock.json
+pnpm-workspace.yaml
 
 # next.js
 /.next/
@@ -45,3 +46,4 @@ dist
 .vscode
 *.swp
 *.swo
+.vercel

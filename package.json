@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 5001 --webpack",
-    "build": "node scripts/clear-cache.js",
-    "full-build": "node scripts/copy-blog-images.js && node scripts/clear-cache.js && pnpm rss",
+    "build": "node scripts/copy-blog-images.js && next build --webpack && touch .next/lock",
+    "full-build": "node scripts/copy-blog-images.js && next build --webpack && touch .next/lock && pnpm rss",
     "start": "next start -p 5001",
     "lint": "next lint",
     "convert": "./scripts/convert.sh",
