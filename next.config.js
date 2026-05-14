@@ -11,11 +11,13 @@ module.exports = withRemoteRefresh(
     // Fix for the route mismatch error
     trailingSlash: true,
 
-    // Shrink serverless function bundles by excluding files that are never
-    // needed at runtime. ffprobe-static is a 70+ MB binary used only during
-    // build (in utils/rehype/imageSize.ts for local MDX images).
+    // Shrink serverless function bundles. The biggest offender is
+    // .pnpm-store/v3/files — pnpm 9 on Vercel creates a 1 GB+
+    // content-addressable cache at the project root, and nft's symlink
+    // resolution pulls it into every function bundle.
     outputFileTracingExcludes: {
       '*': [
+        '.pnpm-store/**',
         'node_modules/.pnpm/ffprobe-static@*/**/*',
         'node_modules/ffprobe-static/**/*',
         'public/images/posts/**',
